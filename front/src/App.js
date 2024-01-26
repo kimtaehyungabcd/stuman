@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Add from './component/Add';
 import Homepage from './component/Homepage';
+import Add from './component/Input_form';
 import MyNavbar from './component/MyNavbar';
 import './component/css.css';
 
@@ -11,7 +11,7 @@ function App() {
         <MyNavbar />
         <Routes>
           <Route path='/' element={<Homepage />} />
-          <Route path='/add' element={<Add />} />
+          <Route path='/input_form' element={<Add />} />
         </Routes>
       </BrowserRouter>
     </div>

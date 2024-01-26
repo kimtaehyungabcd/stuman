@@ -385,3 +385,9 @@ p,h1:nth-child(18) {
 
   width: 300px;
 }
+ .modal{
+  
+  background-position: right bottom, left top;
+  background-repeat: no-repeat;
+  background-image:  url('../img/bg_input.png'),linear-gradient(white, rgb(0, 242, 255), rgb(0, 132, 255));
+ }
