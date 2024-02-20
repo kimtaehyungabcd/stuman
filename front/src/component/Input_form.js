@@ -49,7 +49,7 @@ function Input_form() {
         </Form.Group>
       ):(
         <Form.Group as={Col} controlId="formGridEmail">
-             <Form.Label>Photo</Form.Label>
+             
              <Form.Control type="file" onChange={handleFileChange} />
              </Form.Group>
 
@@ -57,30 +57,48 @@ function Input_form() {
    
     
 
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Name:</Form.Label>
-          <Form.Control type="name" placeholder="Enter your name" />
+        <Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
+     
+          <Form.Control type="name" placeholder="name" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Enrollment no:</Form.Label>
-          <Form.Control type="enroll" placeholder="Enter your Enrollment No" />
+        
+          <Form.Control type="enroll" placeholder="Enrollment No" />
         </Form.Group>
       </Row>
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
+       
+        <Form.Control placeholder="address" />
       </Form.Group>
 
+
+      <Row className="mb-3">
+      <Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
+     <Form.Control type="contact" name ='contact' placeholder="contact no" />
+   </Form.Group>
+
+<Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
+  <Form.Control type="contact" name ='email ' placeholder="email Id" />
+   </Form.Group>
+
+   <Form.Group as={Col} controlId="formGridPassword">
+    <Form.Control type="pob" placeholder="Place Of Birth" />
+   </Form.Group>
+ </Row>
+
+ <Form.Group as={Col} controlId="formGridPassword">
+    <Form.Control type="dobw" placeholder="Date Of Birth in words" />
+   </Form.Group>
       <Form.Group className="mb-3" controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor" />
+        
+        <Form.Control placeholder="Name And Adress of Guardian/Parent" />
       </Form.Group>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
+    
           <Form.Control />
         </Form.Group>
 
