@@ -386,8 +386,15 @@ p,h1:nth-child(18) {
   width: 300px;
 }
  .modal{
-  
+
   background-position: right bottom, left top;
   background-repeat: no-repeat;
-  background-image:  url('../img/bg_input.png'),linear-gradient(white, rgb(0, 242, 255), rgb(0, 132, 255));
+  background-image:  url('../img/bg_input.png'),inear-gradient(white, rgb(0, 242, 255), rgb(0, 132, 255));
  }
+
+ .modal-dialog {
+  max-width: var(--bs-modal-width);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 600px;
+}

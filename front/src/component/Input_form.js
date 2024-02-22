@@ -31,13 +31,14 @@ function Input_form() {
       style={{ display: 'block', position: 'initial' }}
     >
       <Modal.Dialog>
+      <Form action="http://localhost/stuman/back/stu_details.php" method="post" >
         <Modal.Header closeButton>
           <Modal.Title>Modal title</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
 
-          <Form>
+        
       <Row className="mb-3">
         
              
@@ -59,78 +60,123 @@ function Input_form() {
 
         <Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
      
-          <Form.Control type="name" placeholder="name" />
+          <Form.Control type="name" name='name' placeholder="name" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridPassword">
         
-          <Form.Control type="enroll" placeholder="Enrollment No" />
+          <Form.Control type="enroll" name='enroll' placeholder="Enrollment No" />
         </Form.Group>
       </Row>
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
        
-        <Form.Control placeholder="address" />
+        <Form.Control placeholder="address"  name='address'/>
       </Form.Group>
 
 
       <Row className="mb-3">
       <Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
-     <Form.Control type="contact" name ='contact' placeholder="contact no" />
+     <Form.Control type="text" name ='contact' placeholder="contact no" />
    </Form.Group>
 
 <Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
-  <Form.Control type="contact" name ='email ' placeholder="email Id" />
+  <Form.Control type="text" name ='email' placeholder="email Id" />
    </Form.Group>
 
    <Form.Group as={Col} controlId="formGridPassword">
-    <Form.Control type="pob" placeholder="Place Of Birth" />
+    <Form.Control type="text" name='pob' placeholder="Place Of Birth" />
    </Form.Group>
  </Row>
 
  <Form.Group as={Col} controlId="formGridPassword">
-    <Form.Control type="dobw" placeholder="Date Of Birth in words" />
-   </Form.Group>
+    <Form.Control type="text" name='dobw' placeholder="Date Of Birth in words" />
+ </Form.Group>
+ <br></br>
       <Form.Group className="mb-3" controlId="formGridAddress2">
-        
-        <Form.Control placeholder="Name And Adress of Guardian/Parent" />
+      <Form.Control placeholder="Name And Adress of Guardian/Parent" name='guardian_address' />
       </Form.Group>
 
       <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridCity">
+        <Form.Group as={Col} controlId="formGridCity" >
     
-          <Form.Control />
+          <Form.Control  placeholder='parent number' name='parent_num'/>
+        </Form.Group>
+        
+        <Form.Group as={Col} controlId="formGridCity" >
+    
+          <Form.Control  placeholder='religion' name='religion' />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridState">
+
+        <Form.Group as={Col} controlId="formGridCity" >
+    
+    <Form.Control  placeholder='category' name='category' />
+  </Form.Group>
+     {/*    <Form.Group as={Col} controlId="formGridState">
           <Form.Label>State</Form.Label>
           <Form.Select defaultValue="Choose...">
             <option>Choose...</option>
             <option>...</option>
           </Form.Select>
-        </Form.Group>
+        </Form.Group> */}
 
-        <Form.Group as={Col} controlId="formGridZip">
+       {/*  <Form.Group as={Col} controlId="formGridZip">
           <Form.Label>Zip</Form.Label>
           <Form.Control />
-        </Form.Group>
+        </Form.Group> */}
       </Row>
 
-      <Form.Group className="mb-3" id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+      <Row className="mb-3">
+      <Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
+     <Form.Control type="text" name ='contact' placeholder="contact no" />
+   </Form.Group>
 
-      <Button variant="primary" type="submit">
+<Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
+  <Form.Control type="text" name ='email ' placeholder="email Id" />
+   </Form.Group>
+
+  
+ </Row>
+
+      <Form.Group as={Col} controlId="formGridCity" >
+    
+    <Form.Control  name='school' placeholder='last school attended' />
+  </Form.Group>
+
+
+   {/*    <Form.Group className="mb-3" id="formGridCheckbox">
+        <Form.Check type="checkbox" label="Check me out" />
+      </Form.Group> */}
+
+ {/*      <Button variant="primary" type="submit">
         Submit
-      </Button>
-    </Form>
+      </Button> */}
+
+      <br></br>
+<Row className="mb-3">
+      <Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
+     <Form.Control type="text" name ='district' placeholder="district" />
+   </Form.Group>
+
+<Form.Group as={Col} style={{border:"black",color:"black  "}}  controlId="formGridEmail">
+  <Form.Control type="text" name ='constituency' placeholder="constituency" />
+   </Form.Group>
+
+  
+ </Row>
+ 
 
 
     </Modal.Body>
     <Modal.Footer>
           <Button variant="secondary">Close</Button>
-          <Button variant="primary">Save changes</Button>
+          <Button variant="primary" type="submit">
+        Submit
+      </Button>
+   
         </Modal.Footer>
+        </Form>
       </Modal.Dialog>
     </div>
     </>
