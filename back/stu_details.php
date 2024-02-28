@@ -1,37 +1,69 @@
 <?php
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
-    $name = $_POST['name'];
-    $enrollmentNo = $_POST['enroll'];
-    $address = $_POST['address'];
-    $contactNo = $_POST['contact'];
-    $email = $_POST['email'];
-    $placeOfBirth = $_POST['pob'];
-    $dateOfBirthInWords = $_POST['dobw'];
-    $guardianAddress = $_POST['guardian_address'];
-    $parentNumber = $_POST['parent_num'];
-    $religion = $_POST['religion'];
-    $category = $_POST['category'];
-    $lastSchoolAttended = $_POST['school'];
-    $district = $_POST['district'];
-    $constituency = $_POST['constituency'];
+// Assuming you have established a database connection already
+include 'connection.php';
 
-    // Display the retrieved data
-    echo "<h2>Form Data</h2>";
-    echo "<p><strong>Name:</strong> $name</p>";
-    echo "<p><strong>Enrollment No:</strong> $enrollmentNo</p>";
-    echo "<p><strong>Address:</strong> $address</p>";
-    echo "<p><strong>Contact No:</strong> $contactNo</p>";
-    echo "<p><strong>Email:</strong> $email</p>";
-    echo "<p><strong>Place of Birth:</strong> $placeOfBirth</p>";
-    echo "<p><strong>Date of Birth in Words:</strong> $dateOfBirthInWords</p>";
-    echo "<p><strong>Guardian Address:</strong> $guardianAddress</p>";
-    echo "<p><strong>Parent Number:</strong> $parentNumber</p>";
-    echo "<p><strong>Religion:</strong> $religion</p>";
-    echo "<p><strong>Category:</strong> $category</p>";
-    echo "<p><strong>Last School Attended:</strong> $lastSchoolAttended</p>";
-    echo "<p><strong>District:</strong> $district</p>";
-    echo "<p><strong>Constituency:</strong> $constituency</p>";
+// Check if all required POST data is set
+$requiredFields = ['enroll', 'name', 'contact', 'dobw', 'email', 'pob', 'guardian_address', 'address', 'parent_num', 'category', 'school', 'district', 'constituency', 'religion'];
+
+foreach ($requiredFields as $field) {
+    if (!isset($_POST[$field]) || empty($_POST[$field])) {
+        die("Error: Missing required field - $field");
+    }
 }
+
+// Check if a file is uploaded
+if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+    // File upload directory
+    $targetDir = "uploads/";
+    $fileName = basename($_FILES["photo"]["name"]);
+    $targetFile = $targetDir . $fileName;
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    // Check if the file is an actual image
+    $check = getimagesize($_FILES["photo"]["tmp_name"]);
+    if ($check === false) {
+        die("Error: File is not an image.");
+    }
+
+    // Check file size (maximum 5MB)
+    if ($_FILES["photo"]["size"] > 5 * 1024 * 1024) {
+        die("Error: Sorry, your file is too large.");
+    }
+
+    // Allow only certain file formats
+    $allowedFormats = ["jpg", "jpeg", "png", "gif"];
+    if (!in_array($imageFileType, $allowedFormats)) {
+        die("Error: Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+    }
+
+    // Generate a unique filename to avoid overwriting existing files
+    $uniqueFilename = uniqid() . "_" . $fileName;
+    $targetFile = $targetDir . $uniqueFilename;
+
+    // Upload file
+    if (!move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFile)) {
+        die("Error: Sorry, there was an error uploading your file.");
+    }
+} else {
+    die("Error: No file uploaded or file upload error occurred.");
+}
+
+// Prepare SQL statement for inserting form data
+$sql = "INSERT INTO personal_details (enrollment_number, first_name, middle_name, last_name, student_contact_number, date_of_birth, email, place_of_birth, name_of_parent_guardian, address, parent_contact_number, category, last_school_attended, district, constituency, religion, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+// Set parameters and execute
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssssssssssssssss", $_POST['enroll'], $_POST['name'], $_POST['middleName'], $_POST['lastName'], $_POST['contact'], $_POST['dobw'], $_POST['email'], $_POST['pob'], $_POST['guardian_address'], $_POST['address'], $_POST['parent_num'], $_POST['category'], $_POST['school'], $_POST['district'], $_POST['constituency'], $_POST['religion'], $targetFile);
+
+if ($stmt->execute()) {
+    echo "Records inserted successfully.";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+// Close statement
+$stmt->close();
+
+// Close connection
+$conn->close();
 ?>
