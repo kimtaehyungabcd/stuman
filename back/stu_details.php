@@ -2,14 +2,6 @@
 // Assuming you have established a database connection already
 include 'connection.php';
 
-// Check if all required POST data is set
-$requiredFields = ['enroll', 'name', 'contact', 'dobw', 'email', 'pob', 'guardian_address', 'address', 'parent_num', 'category', 'school', 'district', 'constituency', 'religion'];
-
-foreach ($requiredFields as $field) {
-    if (!isset($_POST[$field]) || empty($_POST[$field])) {
-        die("Error: Missing required field - $field");
-    }
-}
 
 // Check if a file is uploaded
 if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
@@ -53,7 +45,7 @@ $sql = "INSERT INTO personal_details (enrollment_number, first_name, middle_name
 
 // Set parameters and execute
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssssssssssssssss", $_POST['enroll'], $_POST['name'], $_POST['middleName'], $_POST['lastName'], $_POST['contact'], $_POST['dobw'], $_POST['email'], $_POST['pob'], $_POST['guardian_address'], $_POST['address'], $_POST['parent_num'], $_POST['category'], $_POST['school'], $_POST['district'], $_POST['constituency'], $_POST['religion'], $targetFile);
+$stmt->bind_param("sssssssssssssssss", $_POST['enroll'], $_POST['name'], $_POST['middleName'], $_POST['lastName'], $_POST['contact'], $_POST['dobw'], $_POST['email'], $_POST['pob'], $_POST['parent_name'], $_POST['address'], $_POST['parent_num'], $_POST['category'], $_POST['school'], $_POST['district'], $_POST['constituency'], $_POST['religion'], $targetFile);
 
 if ($stmt->execute()) {
     echo "Records inserted successfully.";
