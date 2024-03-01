@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 function Query() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
