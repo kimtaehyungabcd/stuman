@@ -19,8 +19,8 @@ function MyNavbar() {
       <Link to="/input_marks" style={{ borderRadius: '10%',  marginRight: '15px',position:'fixed',right:'10%',color: '#00d2dc' }}>
          marks
       </Link>
-      <Link to="/link-2" style={{ borderRadius: '10%',  marginRight: '15px',position:'fixed',right:'5%',color: '#a5c347' }}>
-        Link 3
+      <Link to="/listing_details" style={{ borderRadius: '10%',  marginRight: '15px',position:'fixed',right:'5%',color: '#a5c347' }}>
+        view
       </Link>
     </nav>
   );

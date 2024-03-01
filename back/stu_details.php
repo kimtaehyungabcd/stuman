@@ -6,7 +6,7 @@ include 'connection.php';
 // Check if a file is uploaded
 if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
     // File upload directory
-    $targetDir = "uploads/";
+    $targetDir = "../front/public/uploads";
     $fileName = basename($_FILES["photo"]["name"]);
     $targetFile = $targetDir . $fileName;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
