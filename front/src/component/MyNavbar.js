@@ -14,10 +14,10 @@ function MyNavbar() {
         Active
       </Link>
       <Link to="/input_form" style={{ borderRadius: '10%',  position:'fixed',right:'16%' ,color: '#ff236c'}}>
-        Link 1
+         details
       </Link>
-      <Link to="/link-2" style={{ borderRadius: '10%',  marginRight: '15px',position:'fixed',right:'10%',color: '#00d2dc' }}>
-        Link 2
+      <Link to="/input_marks" style={{ borderRadius: '10%',  marginRight: '15px',position:'fixed',right:'10%',color: '#00d2dc' }}>
+         marks
       </Link>
       <Link to="/link-2" style={{ borderRadius: '10%',  marginRight: '15px',position:'fixed',right:'5%',color: '#a5c347' }}>
         Link 3
