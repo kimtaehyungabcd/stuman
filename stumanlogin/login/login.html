@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="login.php" method="post">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <div class="password-toggle">
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <!-- Password visibility toggle button -->
+            <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
+            <!-- End password visibility toggle button -->
+        </div>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="../signup/signup.html">Signup</a></p>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>
