@@ -3,7 +3,10 @@
 include 'connection.php';
 
 // Get the year from user input
-$year = $_POST['year']; // Assuming you're using a form with POST method
+if(isset($_GET['year'])) {
+    // Retrieve the value of the 'year' parameter
+    $year = $_GET['year'];
+    
 // Prepare the SQL statement to retrieve enrollment numbers and subject names based on year and conditions
 $sql = "SELECT Distinct enrollment_number 
         FROM subject_marks 
@@ -43,4 +46,6 @@ $conn->close();
 // Send JSON response
 header('Content-Type: application/json');
 echo json_encode($details);
+
+}
 ?>

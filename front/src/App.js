@@ -7,6 +7,7 @@ import ListingMarks from './component/Listing_marks';
 import MyNavbar from './component/MyNavbar';
 import Query from './component/Query';
 import './component/css.css';
+import Year from './component/Year';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/Listing_marks' element={<ListingMarks/>} />
           <Route path='/query' element={<Query />}  />
           <Route path='/input_marks' element={<Input_marks />} />
+          <Route path='/year' element={<Year />} />
         </Routes>
       </BrowserRouter>
     </div>
