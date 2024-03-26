@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2024 at 04:10 PM
+-- Generation Time: Mar 11, 2024 at 02:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,7 +38,8 @@ CREATE TABLE `subject_marks` (
   `term_marks` decimal(5,2) DEFAULT NULL,
   `practicals` decimal(5,2) DEFAULT NULL,
   `term_work` decimal(5,2) DEFAULT NULL,
-  `total_marks` decimal(5,2) DEFAULT NULL
+  `total_marks` decimal(5,2) DEFAULT NULL,
+  `percentage_column` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
