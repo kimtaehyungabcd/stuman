@@ -4,12 +4,13 @@ include 'connection.php';
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 // Check if the 'enrollment_number' parameter is set in the URL
-if(isset($_GET['enrollment_number'])) {
+if(isset($_GET['sem'])) {
+  
     // Retrieve the value of the 'enrollment_number' parameter
-    $enrollment_number = $_GET['enrollment_number'];
-   
+    $sem= $_GET['sem']; 
+    $enrol=$_GET['enrol']; 
     // Prepare the SQL statement to retrieve all semester details based on the enrollment number
-    $sql = "SELECT * FROM subject_marks WHERE enrollment_number = $enrollment_number";
+    $sql = "SELECT * FROM subject_marks WHERE semester = $sem AND enrollment_number=$enrol";
 
     // Prepare and bind parameters
     $stmt = $conn->prepare($sql);

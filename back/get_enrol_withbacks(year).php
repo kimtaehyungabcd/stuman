@@ -2,13 +2,15 @@
 // Include the connection file
 include 'connection.php';
 
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
 // Get the year from user input
 if(isset($_GET['year'])) {
     // Retrieve the value of the 'year' parameter
-    $year = $_GET['year'];
+    $year =$_GET['year'];
     
 // Prepare the SQL statement to retrieve enrollment numbers and subject names based on year and conditions
-$sql = "SELECT Distinct enrollment_number 
+$sql = "SELECT Distinct * 
         FROM subject_marks 
         WHERE year = ? 
         AND (theory_marks < 30 

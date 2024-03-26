@@ -1,6 +1,6 @@
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function MyNavbar() {
@@ -58,7 +58,7 @@ function MyNavbar() {
       >
         <option value="#">view </option>
         {years.map((year, index) => (
-          <option key={index} value={`/year?=${year.year}`}>
+          <option key={index} value={`year?year=${year.year}`}>
             {year.year}
           </option>
         ))}
