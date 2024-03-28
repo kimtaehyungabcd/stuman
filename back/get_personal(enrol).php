@@ -1,9 +1,10 @@
 <?php
 // Include the connection file
 include 'connection.php';
-
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
 // Get the enrollment number from user input
-$enrollment_number = $_POST['enrollment_number']; // Assuming you're using a form with POST method
+$enrollment_number = $_GET['enrollment_number']; // Assuming you're using a form with POST method
 //$enrollment_number = 1;
 // Prepare the SQL statement to retrieve personal details based on the enrollment number
 $sql = "SELECT * FROM personal_details WHERE enrollment_number = ?";

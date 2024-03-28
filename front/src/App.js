@@ -9,6 +9,9 @@ import Query from './component/Query';
 import Sem from './component/Sem_sem';
 import Year from './component/Year';
 import './component/css.css';
+import Both from './component/Both_enroll'
+import Result_enroll from './component/Result_enroll'
+import Personal_enroll from './component/Personal_enroll'
 function App() {
   return (
     <div className='app'>
@@ -23,6 +26,10 @@ function App() {
           <Route path='/input_marks' element={<Input_marks />} />
           <Route path='/year' element={<Year />} />
           <Route path='/sem' element={<Sem/>}/>
+          <Route path='/both' element={<Both/>}/>
+          
+          <Route path='/Personal_enroll' element={<Personal_enroll/>}/>
+          <Route path='/Result_enroll' element={<Result_enroll/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-function Year() {
+function Personal_enroll() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [word, setWord] = useState('');
@@ -28,15 +28,15 @@ function Year() {
     
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        const year = urlParams.get('year');
-        setWord(year);
+        const enrollment_number = urlParams.get('enrollment_number');
+        setWord(enrollment_number);
 
-        fetchData(year);
+        fetchData(enrollment_number);
     }, []); // Empty dependency array to run the effect only once on component mount
 
-    const fetchData = async (year) => {
+    const fetchData = async (enrollment_number) => {
         try {
-            const response = await fetch(`http://localhost/stuman/back/all_personaldetail(year).php?year=${year}`);
+            const response = await fetch(`http://localhost/stuman/back/get_personal(enrol).php?enrollment_number=${enrollment_number}`);
 
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
@@ -65,7 +65,7 @@ function Year() {
 </select>
 </nav>
 </div>
-            <h1 style={{margin:'auto',alignItems:'center'}}>student details of year {word}</h1>
+            <h1 style={{margin:'auto',alignItems:'center'}}>student details of enrollment_number {word}</h1>
             
           
 
@@ -120,4 +120,4 @@ function Year() {
     );
 }
 
-export default Year;
+export default Personal_enroll;

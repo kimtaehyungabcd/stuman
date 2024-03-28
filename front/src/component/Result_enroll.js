@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-function Year() {
+function Result_enroll() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [word, setWord] = useState('');
@@ -28,16 +28,15 @@ function Year() {
     
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        const year = urlParams.get('year');
-        setWord(year);
+        const enrollment_number = urlParams.get('enrollment_number');
+        setWord(enrollment_number);
 
-        fetchData(year);
+        fetchData(enrollment_number);
     }, []); // Empty dependency array to run the effect only once on component mount
 
-    const fetchData = async (year) => {
+    const fetchData = async (enrollment_number) => {
         try {
-            const response = await fetch(`http://localhost/stuman/back/all_personaldetail(year).php?year=${year}`);
-
+            const response = await fetch(`http://localhost/stuman/back/get_result(enrol).php?enrollment_number=${enrollment_number}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
@@ -65,7 +64,7 @@ function Year() {
 </select>
 </nav>
 </div>
-            <h1 style={{margin:'auto',alignItems:'center'}}>student details of year {word}</h1>
+            <h1 style={{margin:'auto',alignItems:'center'}}>student details of enrollment_number {word}</h1>
             
           
 
@@ -74,7 +73,15 @@ function Year() {
   <nav style={{ display: 'flex',justifyContent:'flex-end'}} >
   <select style={{ display: 'flex', marginRight: '0px' }} value={selectedOption} onChange={handleOptionChange}>
   <option value="">Select an option</option>
-  <option value={`http://localhost:3000/Listing_marks?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Listing_marks?enrollment_number=${item.enrollment_number}`)}>Marks</option>
+
+  <option value={`http://localhost:3000/Sem?sem=1&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=1&enrol=${item.enrollment_number}`)}>sem1</option>
+  <option value={`http://localhost:3000/Sem?sem=2&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=2&enrol=${item.enrollment_number}`)}>sem2</option>
+  <option value={`http://localhost:3000/Sem?sem=3&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=3&enrol=${item.enrollment_number}`)}>sem3</option>
+  <option value={`http://localhost:3000/Sem?sem=4&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=4&enrol=${item.enrollment_number}`)}>sem4</option>
+  <option value={`http://localhost:3000/Sem?sem=5&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=5&enrol=${item.enrollment_number}`)}>sem5</option>
+  <option value={`http://localhost:3000/Sem?sem=6&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=6&enrol=${item.enrollment_number}`)}>sem6</option>
+
+
   <option value="#back" onClick={() => handleOptionClick("option2")}>backs</option>
   <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
 </select>
@@ -83,33 +90,28 @@ function Year() {
    </nav>
    <div className='rectangle' key={item.enrollment_number}>
  
-   <div>
+  <div>
      <img src={item.photo} alt="student photo" height="200" width="200" style={{ margin: '30px' }} />
    </div>
    <div className='rec'>
-     <p><p style={{ fontWeight: 'bold' }}>Enrollment Number</p>: {item.enrollment_number}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Name:</p> {item.first_name} {item.last_name}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Middle Name: </p>{item.middle_name}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Student Contact Number:</p> {item.student_contact_number}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Date of Birth:,</p> {item.date_of_birth}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Email: </p>{item.email}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Place of Birth: </p>{item.place_of_birth}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Name of Parent/Guardian:</p> {item.name_of_parent_guardian}</p>
+   <p><strong>Enrollment Number</strong>: {item.enrollment_number}</p>
+                        <p><strong>Semester</strong>: {item.semester}</p>
+                        <p><strong>Year</strong>: {item.year}</p>
+                        <p><strong>Month</strong>: {item.month}</p>
+                        <p><strong>Subject Code</strong>: {item.sub_code}</p>
+                        <p><strong>Subject Name</strong>: {item.sub_name}</p>
+ 
    </div>
    <div className='rec'>
-     <p><p style={{ fontWeight: 'bold' }}>Address: </p>{item.address}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Parent Contact Number:</p> {item.parent_contact_number}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Course:</p> {item.course}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Category:</p> {item.category}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Date of Admission:</p> {item.date_of_admission}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Last School Attended:</p> {item.last_school_attended}</p>
-     <p><p style={{ fontWeight: 'bold' }}>EPIC:</p> {item.EPIC}</p>
-     <p><p style={{ fontWeight: 'bold' }}>District:</p> {item.district}</p>
+   <p><strong>Theory Marks</strong>: {item.theory_marks}</p>
+                        <p><strong>Term Marks</strong>: {item.term_marks}</p>
+                        <p><strong>Practicals</strong>: {item.practicals}</p>
+                        <p><strong>Term Work</strong>: {item.term_work}</p>
+                        <p><strong>Total Marks</strong>: {item.total_marks}</p>
+                        <p><strong>Percentage</strong>: {item.percentage_column}</p>
+   
    </div>
-   <div className='rec'>
-     <p><p style={{ fontWeight: 'bold' }}>Constituency: </p>{item.constituency}</p>
-     <p><p style={{ fontWeight: 'bold' }}>Religion:</p> {item.religion}</p>
-   </div>
+ 
  </div>
  </div>
  
@@ -120,4 +122,4 @@ function Year() {
     );
 }
 
-export default Year;
+export default Result_enroll;
