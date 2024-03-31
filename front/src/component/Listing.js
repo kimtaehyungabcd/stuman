@@ -66,7 +66,8 @@ function Listing() {
   <select style={{ display: 'flex', marginRight: '0px' }} value={selectedOption} onChange={handleOptionChange}>
   <option value="">Select an option</option>
   <option value="http://localhost:3000/Listing_marks" onClick={() => handleOptionClick("http://localhost:3000/Listing_marks")}>Marks</option>
-  <option value="#back" onClick={() => handleOptionClick("option2")}>backs</option>
+  
+  <option value={`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`)}>Back</option>
   <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
 </select>
 

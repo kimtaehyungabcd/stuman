@@ -82,7 +82,7 @@ function Result_enroll() {
   <option value={`http://localhost:3000/Sem?sem=6&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=6&enrol=${item.enrollment_number}`)}>sem6</option>
 
 
-  <option value="#back" onClick={() => handleOptionClick("option2")}>backs</option>
+  <option value={`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`)}>Back</option>
   <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
 </select>
 
