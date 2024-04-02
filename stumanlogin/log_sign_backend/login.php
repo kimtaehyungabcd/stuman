@@ -15,12 +15,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify password
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
-            echo "Login successful!";
+            
+            echo "<script>
+            alert('Login successful!');
+            window.location.href='http://localhost:3000/';
+            </script>";
+            
+            
         } else {
-            echo "Invalid username or password";
+            echo "<script>alert('Invalid username or password');</script>";
         }
     } else {
-        echo "Invalid username or password";
+        echo "<script>alert('Invalid username or password');</script>";
     }
 }
 

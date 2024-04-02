@@ -12,6 +12,7 @@ import './component/css.css';
 import Both from './component/Both_enroll'
 import Result_enroll from './component/Result_enroll'
 import Personal_enroll from './component/Personal_enroll'
+import Pass_month from './component/Pass_month'
 function App() {
   return (
     <div className='app'>
@@ -25,6 +26,7 @@ function App() {
           <Route path='/query' element={<Query />}  />
           <Route path='/input_marks' element={<Input_marks />} />
           <Route path='/year' element={<Year />} />
+          <Route path='/pass_mon' element={<Pass_month />} />
           <Route path='/sem' element={<Sem/>}/>
           <Route path='/both' element={<Both/>}/>
           
