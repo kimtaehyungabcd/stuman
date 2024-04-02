@@ -1,12 +1,13 @@
 <?php
 // Include the connection file
 include 'connection.php';
-
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
 // Get the year and month from user input
-$year = $_POST['year']; // Assuming you're using a form with POST method
-$month = $_POST['month']; // Assuming you're using a form with POST method
+$year = $_GET['year']; // Assuming you're using a form with POST method
+$month = $_GET['month']; // Assuming you're using a form with POST method
 //$year = 2020;
-$month = "February";
+
 // Prepare the SQL statement to retrieve enrollment number, name, and percentage based on year, month, and conditions
 $sql = "SELECT pd.enrollment_number, pd.first_name, pd.middle_name, pd.last_name, sm.percentage_column
         FROM subject_marks sm

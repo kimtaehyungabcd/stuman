@@ -1,9 +1,41 @@
 import React, { useEffect, useState } from 'react';
-function Year() {
+function Personal_enroll() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [word, setWord] = useState('');
     const [selectedOption, setSelectedOption] = useState('');
+  
+
+    useEffect(() => {
+        // Function to fetch data
+        const fetchData = async () => {
+            try {
+                // Parse URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const month = urlParams.get('month');
+                const year = urlParams.get('year');
+                console.log(year);
+                console.log(month);
+                setWord(year)
+                // Fetch data from API
+                const response = await fetch(`http://localhost/stuman/back/get_passedstudent(year_month).php?month=${month}&year=${year}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
+                setData(data);
+            } catch (error) {
+                setError(error.message);
+            }
+        };
+
+        // Call the fetchData function
+        fetchData();
+    }, []); // Empty dependency array to run the effect only once on component mount
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     // Function to handle the change in the selected option
     const handleOptionChange = (event) => {
@@ -26,53 +58,23 @@ function Year() {
         
     
     
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const year = urlParams.get('year');
-        setWord(year);
-      console.log(word);
-        fetchData(year);
-    }, []); // Empty dependency array to run the effect only once on component mount
+ 
 
-    const fetchData = async (year) => {
-        try {
-            const response = await fetch(`http://localhost/stuman/back/all_personaldetail(year).php?year=${year}`);
-            setWord(year);
-            console.log(word);
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-            const data = await response.json();
-            setData(data);
-            
-        } catch (error) {
-            setError(error.message);
-        }
-    };
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
 
     return (
         <>
             <div style={{margin:'auto',alignItems:'center',display:'grid'}}>
 <div className='outer'>
-<nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
+<nav style={{ display: 'flex',justifyContent:'flex-end'}} >
   <select style={{ display: 'flex', marginRight: '0px' }} value={selectedOption} onChange={handleOptionChange}>
-    <option value="">Select an option</option>
-    <option value="#passing" >passed student</option>
-    <optgroup label="Marks">
-    <option value={`http://localhost:3000/Pass_mon?month=April&year=${word}`} onClick={() => handleOptionClick(`http://localhost:3000/Pass_mon?month=April&year=${word}`)}>April</option>
-    <option value={`http://localhost:3000/Pass_mon?month=November&year=${word}`} onClick={() => handleOptionClick(`http://localhost:3000/Pass_mon?month=November&year=${word}`)}>November</option>
-    </optgroup>
-    <option value="http://localhost:3000/Query?Religion=religion" onClick={() => handleOptionClick("http://localhost:3000/Query?Religion=religion")}>Religion</option>
-    <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
-  </select>
+  <option value="">Select an option</option>
+  <option value="#passing" onClick={() => handleOptionClick("#")}>Marks</option>
+  <option value="http://localhost:3000/Query?Religion=religion" onClick={() => handleOptionClick("http://localhost:3000/Query?Religion=religion")}>relision</option>
+  <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
+</select>
 </nav>
-
 </div>
-            <h1 style={{margin:'auto',alignItems:'center'}}>student details of year {word}</h1>
+            <h1 style={{margin:'auto',alignItems:'center'}}>Passed student  marks are as follows of {word}: </h1>
             
           
 
@@ -82,8 +84,7 @@ function Year() {
   <select style={{ display: 'flex', marginRight: '0px' }} value={selectedOption} onChange={handleOptionChange}>
   <option value="">Select an option</option>
   <option value={`http://localhost:3000/Listing_marks?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Listing_marks?enrollment_number=${item.enrollment_number}`)}>Marks</option>
- 
-  <option value={`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`)}>Back</option>
+  <option value="#back" onClick={() => handleOptionClick("option2")}>backs</option>
   <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
 </select>
 
@@ -128,4 +129,5 @@ function Year() {
     );
 }
 
-export default Year;
+export default Personal_enroll;
+    

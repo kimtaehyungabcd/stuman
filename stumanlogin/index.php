@@ -9,8 +9,8 @@
     <h1>Welcome to Stuman</h1>
     <p>Please proceed to:</p>
     <ul>
-        <li><a href="signup/signup.html">Signup</a></li>
-        <li><a href="login/login.html">Login</a></li>
+        <li><a href="signup.html">Signup</a></li>
+        <li><a href="login.html">Login</a></li>
     </ul>
 </body>
 </html>

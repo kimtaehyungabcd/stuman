@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if password meets criteria
     if (!is_password_valid($password)) {
-        echo "Error: Password does not meet criteria. Please make sure it has at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.";
+        echo "<script>alert('Error: Password does not meet criteria. Please make sure it has at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.');</script>";
         exit;
     }
 
@@ -38,9 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO users (email, username, password) VALUES ('$email', '$username', '$hashed_password')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Signup successful!";
+        // Display success message
+        echo "<script>alert('Signup successful!');</script>";
+        echo "<script>setTimeout(function(){ window.location.href = '../login.html'; }, 1000);</script>";
+        exit;
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "<script>alert('Error: " . $sql . "\\n" . $conn->error . "');</script>";
     }
 }
 
