@@ -8,7 +8,6 @@ header('Access-Control-Allow-Origin: *');
 if(isset($_GET['year'])) {
     // Retrieve the value of the 'year' parameter
     $year =$_GET['year'];
-    
 // Prepare the SQL statement to retrieve enrollment numbers and subject names based on year and conditions
 $sql = "SELECT Distinct * 
         FROM subject_marks 

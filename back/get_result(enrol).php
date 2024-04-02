@@ -32,7 +32,7 @@ if(isset($_GET['enrollment_number'])) {
             $details[] = $row;
         }
     } else {
-        
+        echo "<script>alert('Details are NULL'); window.location.href = 'another_page.php';</script>";
     }
     
     // Close statement and connection
@@ -41,6 +41,10 @@ if(isset($_GET['enrollment_number'])) {
     
     // Send JSON response
     header('Content-Type: application/json');
-    echo json_encode($details);
+  
+    echo  json_encode($details);
+    
+    
+    
 }
 ?>

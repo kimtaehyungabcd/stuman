@@ -1,9 +1,39 @@
 import React, { useEffect, useState } from 'react';
-function Back_enroll() {
+function Fail_students() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [word, setWord] = useState('');
     const [selectedOption, setSelectedOption] = useState('');
+  
+
+    useEffect(() => {
+        // Function to fetch data
+        const fetchData = async () => {
+            try {
+                // Parse URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const year = urlParams.get('year');
+                console.log(year);
+                setWord(year)
+                // Fetch data from API
+                const response = await fetch(`http://localhost/stuman/back/get_enrol_withbacks(year).php?year=${year}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
+                setData(data);
+            } catch (error) {
+                setError(error.message);
+            }
+        };
+
+        // Call the fetchData function
+        fetchData();
+    }, []); // Empty dependency array to run the effect only once on component mount
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     // Function to handle the change in the selected option
     const handleOptionChange = (event) => {
@@ -26,30 +56,8 @@ function Back_enroll() {
         
     
     
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const enrollment_number = urlParams.get('enrollment_number');
-        setWord(enrollment_number);
+ 
 
-        fetchData(enrollment_number);
-    }, []); // Empty dependency array to run the effect only once on component mount
-
-    const fetchData = async (enrollment_number) => {
-        try {
-            const response = await fetch(`http://localhost/stuman/back/get_backs(enrol).php?enrollment_number=${enrollment_number}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-            const data = await response.json();
-            setData(data);
-        } catch (error) {
-            setError(error.message);
-        }
-    };
-
-    if (error) {
-        alert('No Data'); window.location.href = '/';
-    }
 
     return (
         <>
@@ -64,7 +72,7 @@ function Back_enroll() {
 </select>
 </nav>
 </div>
-            <h1 style={{margin:'auto',alignItems:'center'}}>student details of enrollment_number {word}</h1>
+            <h1 style={{margin:'auto',alignItems:'center'}}>Passed student  marks are as follows of {word}: </h1>
             
           
 
@@ -73,17 +81,8 @@ function Back_enroll() {
   <nav style={{ display: 'flex',justifyContent:'flex-end'}} >
   <select style={{ display: 'flex', marginRight: '0px' }} value={selectedOption} onChange={handleOptionChange}>
   <option value="">Select an option</option>
-
-  <option value={`http://localhost:3000/Sem?sem=1&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=1&enrol=${item.enrollment_number}`)}>sem1</option>
-  <option value={`http://localhost:3000/Sem?sem=2&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=2&enrol=${item.enrollment_number}`)}>sem2</option>
-  <option value={`http://localhost:3000/Sem?sem=3&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=3&enrol=${item.enrollment_number}`)}>sem3</option>
-  <option value={`http://localhost:3000/Sem?sem=4&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=4&enrol=${item.enrollment_number}`)}>sem4</option>
-  <option value={`http://localhost:3000/Sem?sem=5&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=5&enrol=${item.enrollment_number}`)}>sem5</option>
-  <option value={`http://localhost:3000/Sem?sem=6&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=6&enrol=${item.enrollment_number}`)}>sem6</option>
-
-
-
-  <option value={`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`)}>Back</option>
+  <option value={`http://localhost:3000/Listing_marks?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Listing_marks?enrollment_number=${item.enrollment_number}`)}>Marks</option>
+  <option value="#back" onClick={() => handleOptionClick("option2")}>backs</option>
   
 </select>
 
@@ -91,9 +90,6 @@ function Back_enroll() {
    </nav>
    <div className='rectangle' key={item.enrollment_number}>
  
-  <div>
-     <img src={item.photo} alt="student photo" height="200" width="200" style={{ margin: '30px' }} />
-   </div>
    <div className='rec'>
    <p><strong>Enrollment Number</strong>: {item.enrollment_number}</p>
                         <p><strong>Semester</strong>: {item.semester}</p>
@@ -123,4 +119,5 @@ function Back_enroll() {
     );
 }
 
-export default Back_enroll;
+export default Fail_students;
+    

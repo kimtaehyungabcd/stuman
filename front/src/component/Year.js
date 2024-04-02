@@ -51,7 +51,7 @@ function Year() {
     };
 
     if (error) {
-        return <div>Error: {error}</div>;
+        alert('No Data'); window.location.href = '/';
     }
 
     return (
@@ -66,13 +66,13 @@ function Year() {
     <option value={`http://localhost:3000/Pass_mon?month=April&year=${word}`} onClick={() => handleOptionClick(`http://localhost:3000/Pass_mon?month=April&year=${word}`)}>April</option>
     <option value={`http://localhost:3000/Pass_mon?month=November&year=${word}`} onClick={() => handleOptionClick(`http://localhost:3000/Pass_mon?month=November&year=${word}`)}>November</option>
     </optgroup>
-    <option value="http://localhost:3000/Query?Religion=religion" onClick={() => handleOptionClick("http://localhost:3000/Query?Religion=religion")}>Religion</option>
-    <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
+    <option value={`http://localhost:3000/Fail_students?year=${word}`} onClick={() => handleOptionClick(`http://localhost:3000/Fail_students?year=${word}`)}>Backs</option>
+    
   </select>
 </nav>
 
 </div>
-            <h1 style={{margin:'auto',alignItems:'center'}}>student details of year {word}</h1>
+            <h1 style={{margin:'auto',alignItems:'center'}}>Student of year {word}</h1>
             
           
 
@@ -84,7 +84,7 @@ function Year() {
   <option value={`http://localhost:3000/Listing_marks?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Listing_marks?enrollment_number=${item.enrollment_number}`)}>Marks</option>
  
   <option value={`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`)}>Back</option>
-  <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
+  
 </select>
 
 

@@ -26,7 +26,7 @@ function Query() {
     };
 
     if (error) {
-        return <div>Error: {error}</div>;
+        alert('No Data'); window.location.href = '/';
     }
 
     return (

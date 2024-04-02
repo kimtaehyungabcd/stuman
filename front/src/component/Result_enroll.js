@@ -48,7 +48,7 @@ function Result_enroll() {
     };
 
     if (error) {
-        return <div>Error: {error}</div>;
+        alert('No Data'); window.location.href = '/';
     }
 
     return (
@@ -60,7 +60,7 @@ function Result_enroll() {
   <option value="">Select an option</option>
   <option value="#passing" onClick={() => handleOptionClick("#")}>Marks</option>
   <option value="http://localhost:3000/Query?Religion=religion" onClick={() => handleOptionClick("http://localhost:3000/Query?Religion=religion")}>relision</option>
-  <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
+  
 </select>
 </nav>
 </div>
@@ -83,16 +83,14 @@ function Result_enroll() {
 
 
   <option value={`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`)}>Back</option>
-  <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
+  
 </select>
 
 
    </nav>
    <div className='rectangle' key={item.enrollment_number}>
  
-  <div>
-     <img src={item.photo} alt="student photo" height="200" width="200" style={{ margin: '30px' }} />
-   </div>
+ 
    <div className='rec'>
    <p><strong>Enrollment Number</strong>: {item.enrollment_number}</p>
                         <p><strong>Semester</strong>: {item.semester}</p>

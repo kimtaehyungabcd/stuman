@@ -43,7 +43,7 @@ function Sem_sem() {
     };
 
     if (error) {
-        return <div>Error: {error}</div>;
+        alert('No Data'); window.location.href = '/';
     }
 
     return (
@@ -55,7 +55,7 @@ function Sem_sem() {
                             <option value="">Select an option</option>
                             <option value="#passing" onClick={() => handleOptionClick("#")}>Marks</option>
                             <option value="http://localhost:3000/Query?Religion=religion" onClick={() => handleOptionClick("http://localhost:3000/Query?Religion=religion")}>relision</option>
-                            <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
+                            
                         </select>
                     </nav>
                 </div>
@@ -75,7 +75,7 @@ function Sem_sem() {
   <option value={`http://localhost:3000/Sem?sem=6&enrol=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Sem?sem=6&enrol=${item.enrollment_number}`)}>sem6</option>
                                
   <option value={`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`} onClick={() => handleOptionClick(`http://localhost:3000/Back_enroll?enrollment_number=${item.enrollment_number}`)}>Back</option>
-                                <option value="option3" onClick={() => handleOptionClick("option3")}>Option 3</option>
+                                
                             </select>
                         </nav>
                         <div className='rectangle' key={item.enrollment_number}>

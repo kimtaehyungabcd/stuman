@@ -13,10 +13,9 @@ import Result_enroll from './component/Result_enroll';
 import Sem from './component/Sem_sem';
 import Year from './component/Year';
 import './component/css.css';
-import Both from './component/Both_enroll'
-import Result_enroll from './component/Result_enroll'
-import Personal_enroll from './component/Personal_enroll'
+
 import Pass_month from './component/Pass_month'
+import Failed from './component/Fail_students'
 function App() {
   return (
     <div className='app'>
@@ -36,6 +35,7 @@ function App() {
           <Route path='/Back_enroll' element={<Back_enroll/>}/>
           <Route path='/Personal_enroll' element={<Personal_enroll/>}/>
           <Route path='/Result_enroll' element={<Result_enroll/>}/>
+          <Route path='/Fail_students' element={<Failed/>}/>
         </Routes>
       </BrowserRouter>
     </div>
