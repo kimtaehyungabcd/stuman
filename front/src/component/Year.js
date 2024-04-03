@@ -61,8 +61,8 @@ function Year() {
 <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
   <select style={{ display: 'flex', marginRight: '0px' }} value={selectedOption} onChange={handleOptionChange}>
     <option value="">Select an option</option>
-    <option value="#passing" >passed student</option>
-    <optgroup label="Marks">
+   
+    <optgroup label="Passed student">
     <option value={`http://localhost:3000/Pass_mon?month=April&year=${word}`} onClick={() => handleOptionClick(`http://localhost:3000/Pass_mon?month=April&year=${word}`)}>April</option>
     <option value={`http://localhost:3000/Pass_mon?month=November&year=${word}`} onClick={() => handleOptionClick(`http://localhost:3000/Pass_mon?month=November&year=${word}`)}>November</option>
     </optgroup>

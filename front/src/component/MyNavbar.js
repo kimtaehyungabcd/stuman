@@ -1,11 +1,14 @@
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+
 import { Link } from 'react-router-dom';
 
 function MyNavbar() {
   const [years, setYears] = useState([]);
   const [error, setError] = useState(null);
+  const delayTimeout = useRef(null);
+
 
   useEffect(() => {
     fetchData();
@@ -24,10 +27,14 @@ function MyNavbar() {
     return <div>Error fetching data: {error.message}</div>;
   }
 
-  const handleAction = async (e) => {
+  const handleAction = (e) => {
     const inputValue = e.target.value;
-    window.location.href = `both?enrollment_number=${inputValue}`;
-  };
+    clearTimeout(delayTimeout.current); // Clear any previous timeouts
+    delayTimeout.current = setTimeout(() => {
+        window.location.href = `both?enrollment_number=${inputValue}`;
+    }, 1000); // Adjust the delay time (in milliseconds) as needed
+};
+
 
   return (
     <nav style={{ height: '70px', padding: '15px', position: 'sticky', backgroundColor: 'white', width: '100%' }}>
@@ -43,6 +50,7 @@ function MyNavbar() {
       <Link to="/input_marks" style={{ borderRadius: '10%', marginRight: '15px', position: 'fixed', right: '20%', color: '#00d2dc' }}>
         marks
       </Link>
+      
       <div style={{ position: 'fixed', right: '10%' }}>
         <select
           style={{
@@ -74,6 +82,9 @@ function MyNavbar() {
           onChange={handleAction}
         />
       </div>
+      <Link to="http://localhost/stuman/stumanlogin/login.html" style={{ borderRadius: '10%', position: 'fixed', right: '5%', marginRight: '15px', marginLeft: '180px', color: '#a5c347' }}>
+        Login
+      </Link>
     </nav>
   );
 }

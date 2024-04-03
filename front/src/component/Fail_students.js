@@ -32,7 +32,7 @@ function Fail_students() {
     }, []); // Empty dependency array to run the effect only once on component mount
 
     if (error) {
-        return <div>Error: {error}</div>;
+        alert('No Data'); window.location.href = '/';
     }
 
     // Function to handle the change in the selected option
