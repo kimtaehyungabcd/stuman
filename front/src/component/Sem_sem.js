@@ -54,7 +54,7 @@ function Sem_sem() {
                         <select style={{ display: 'flex', marginRight: '0px' }} value={selectedOption} onChange={handleOptionChange}>
                             <option value="">Select an option</option>
                             <option value="#passing" onClick={() => handleOptionClick("#")}>Marks</option>
-                            <option value="http://localhost:3000/Query?Religion=religion" onClick={() => handleOptionClick("http://localhost:3000/Query?Religion=religion")}>relision</option>
+                            {/* <option value="http://localhost:3000/Query?Religion=religion" onClick={() => handleOptionClick("http://localhost:3000/Query?Religion=religion")}>relision</option> */}
                             
                         </select>
                     </nav>
