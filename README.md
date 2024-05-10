@@ -1,8 +1,8 @@
 # stuman
 
-install xampp
-install nodejs
-install npm
+download and install xampp
+download and install nodejs
+download and install npm
 move STUMAN folder in xampp > htdocs
 start apache and mysql from xampp control panel
 in a browser type "http://localhost/phpmyadmin/"
